@@ -1,0 +1,19 @@
+[Unit]
+Description=JunctionRelay Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/JunctionRelay_Python
+ExecStart=/home/pi/JunctionRelay_Python/junction_relay_env/bin/python /home/pi/JunctionRelay_Python/junctionrelay_python.py
+Restart=always
+RestartSec=10
+
+# Environment variables if needed
+# Environment=JUNCTION_RELAY_BASE_URL=https://api.junctionrelay.com
+
+[Install]
+WantedBy=multi-user.target
